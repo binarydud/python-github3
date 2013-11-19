@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- encoding: utf-8 -*-
+import base64
 
 from pygithub3.core.compat import OrderedDict
 
@@ -116,3 +117,13 @@ class Hook(Resource):
 
     def __str__(self):
         return '<Hook (%s)>' % getattr(self, 'name', '')
+
+
+class Content(Resource):
+
+    def get_content(self):
+        if hasattr(self, 'content'):
+            return base64.b64decode(self.content)
+
+    def __str__(self):
+        return '<Content (%s)>' % getattr(self, 'name','')

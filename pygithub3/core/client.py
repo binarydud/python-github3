@@ -49,11 +49,11 @@ class Client(object):
 
     def set_token(self, token):
         if token:
-            self.requester.params.append(('access_token', token))
+            self.requester.params['access_token'] = token
 
     def __set_params(self, config):
         per_page = ('per_page', config.get('per_page'))
-        self.requester.params.append(per_page)
+        self.requester.params.update(dict([per_page]))
         if config.get('verbose'):
             self.requester.config = {'verbose': config['verbose']}
         if config.get('timeout'):

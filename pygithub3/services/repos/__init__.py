@@ -9,6 +9,7 @@ from .forks import Forks
 from .keys import Keys
 from .watchers import Watchers
 from .hooks import Hooks
+from.contents import Contents
 
 
 class Repo(Service):
@@ -22,6 +23,7 @@ class Repo(Service):
         self.keys = Keys(**config)
         self.watchers = Watchers(**config)
         self.hooks = Hooks(**config)
+        self.contents = Contents(**config)
         super(Repo, self).__init__(**config)
 
     def list(self, user=None, type='all'):
